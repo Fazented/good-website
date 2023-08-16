@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>hell</title>
+    <link rel="icon" href="icon.jpg">
+    <style>
+        body {
+            background-color: #003300;
+            background-image: url('');
+            background-repeat: repeat;
+            font-family: 'Comic Sans MS';
+            cursor: url('liamcursor.cur'), auto;
+        }
+        .navigation {
+            font-family: 'Comic Sans MS', cursive;
+        }
+        .button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+            animation: bounce 1s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        blinking-text {
+            animation: blink 0.5s infinite;
+        }
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .header-gif {
+            width: 100px;
+            height: 100px;
+            animation: spin 4s linear infinite;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <button class="button">Home</button>
+        <button class="button">About</button>
+        <button class="button">lime</button>
+    </div>
+    <img src="https://cdn.discordapp.com/attachments/1049181537872130068/1140940567187030087/liamsprite.png" alt="lime" class="header-gif">
+    <div class="content">
+        <img src="" alt="face">
+        <h2>it is spelled lime and LOYいM, not liam</h2>
+        <img src="https://media.tenor.com/wB5nDaZLms0AAAAC/meme-anime.gif" alt="die">
+        <span class="blinking-text">hi</span>
+    </div>
+    <marquee behavior="scroll" direction="left" style="color: red; font-size: 24px;">m i c r o s o f t   e d g e ?   w h y   n o t   m i c r o s o f t   c u m ?</marquee>
+    <audio control autoplay>
+        <source src="funkytown-OMEGABASS.mp3">
+    </audio>
+    <script>
+        function popupAlert() {
+            alert("Alert! You are not loved!");
+        }
+        setInterval(popupAlert, 8000);
+    </script>
+</body>
+</html>
