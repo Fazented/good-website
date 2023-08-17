@@ -4,16 +4,16 @@
     <title>hell</title>
     <link rel="icon" href="icon.jpg">
 
+    <link rel="stylesheet" type="css" href="style.css">
 
     <link rel="stylesheet" href="https://serv.hnz.li/lib/bootstrap/dist/css/bootstrap.min.css?t_-IOF5WTLZwNrxyQK9PZrr66PBLLrYBttjt8VJbyg8OBiFedhTVJkzB" />
 
     <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
-<body>
+  <body>
 
-
-        <nav b-3tnlbj4u0l
+    <nav b-3tnlbj4u0l
       class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
       <div b-3tnlbj4u0l class="container-fluid">
         <a class="navbar-brand" href="/">Finn</a>
@@ -34,10 +34,7 @@
              <li b-3tnlbj4u0l class="nav-item">
               <a class="nav-link text-dark" href="lime.html">lime</a>
             </li>
-
-
           </ul>
-
         </div>
       </div>
     </nav>
@@ -48,14 +45,147 @@
         <img src="https://media.tenor.com/wB5nDaZLms0AAAAC/meme-anime.gif" alt="die">
         <span class="blinking-text">hi</span>
     </div>
+
+    <button id="btn">press me</button>
+
+    <div class="container">
+      <ul class="nav-ul">
+        <li class="nav-li">
+          <a href="#" class="nav-a">
+            <span class="nav-a-letters">
+              <span class="nav-a-letter"> y</span>
+              <span class="nav-a-letter"> o</span>
+              <span class="nav-a-letter"> u</span>
+              <span class="nav-a-letter"> r</span>
+              <span class="nav-a-letter"> m</span>
+              <span class="nav-a-letter"> o</span>
+              <span class="nav-a-letter"> t</span>
+              <span class="nav-a-letter"> h</span>
+              <span class="nav-a-letter"> e</span>
+              <span class="nav-a-letter"> r</span>
+            </span>
+            <span class="nav-a-stripe nav-a-stripe--yellow"> </span>
+            <span class="nav-a-stripe nav-a-stripe--turquoise"> </span>
+            <span class="nav-a-stripe nav-a-stripe--purple"> </span>
+            <span class="nav-a-letters-top">
+              <span class="nav-a-letter"> y</span>
+              <span class="nav-a-letter"> o</span>
+              <span class="nav-a-letter"> u</span>
+              <span class="nav-a-letter"> r</span>
+              <span class="nav-a-letter"> m</span>
+              <span class="nav-a-letter"> o</span>
+              <span class="nav-a-letter"> t</span>
+              <span class="nav-a-letter"> h</span>
+              <span class="nav-a-letter"> e</span>
+              <span class="nav-a-letter"> r</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
     <marquee behavior="scroll" direction="left" style="color: red; font-size: 24px;">m i c r o s o f t   e d g e  b a d </marquee>
-    <audio control autoplay>
-        <source src="funkytown-OMEGABASS.mp3">
-    </audio>
+
+    <script>
+      let styleSheet = null;
+
+      const SPARK_ELEMENT_WIDTH = 30;
+      const DISTANCE = 40;
+
+      const RANDOMNESS_ON = true;
+
+      function createTransformSteps() {
+        if (Array.from(arguments).length === 0) {
+          throw Exception("arguments to createTransformSteps should never be empty!");
+        }
+
+        const inputSteps = Array.from(arguments);
+        const outputSteps = [inputSteps.shift()];
+        inputSteps.forEach((step, i) => {
+        outputSteps.push(`${outputSteps[i]} ${step}`);
+        });
+
+      return outputSteps;
+      }
+
+      const dynamicAnimation = (name, rotation) => {
+      if (!styleSheet) {
+        styleSheet = document.createElement("style");
+        styleSheet.type = "css";
+        document.head.appendChild(styleSheet);
+      }
+
+      /**
+      Explaining the transform rules
+      1. prepares spark
+      2. shoots the spark out
+      3. keeps the spark in place while scaling it down
+      */
+
+      const randomDist = RANDOMNESS_ON
+      ? Math.floor((Math.random() - 0.5) * DISTANCE * 0.7)
+      : 0;
+
+      const [s1, s2, s3] = createTransformSteps(
+        `translate(-50%, -50%) rotate(${rotation}deg) translate(10px, 0px)`,
+        `translate(${DISTANCE + randomDist}px, 0px) scale(0.5, 0.5)`,
+        `translate(${SPARK_ELEMENT_WIDTH / 2}px, 0) scale(0, 0)`
+      );
+
+      // todo some axis would be good here.
+      styleSheet.sheet.insertRule(
+      `@keyframes ${name} {
+        0% {
+        transform: ${s1};
+        }
+        70% {
+        transform: ${s2};
+        }
+        100% {
+        transform: ${s3};
+        }
+      }`,
+    styleSheet.length
+    );
+    };
+
+    document.getElementById("btn").addEventListener("click", (e) => {
+      const center = { x: e.pageX, y: e.pageY };
+      makeBurst(center);
+    });
+
+    const makeBurst = (center) => {
+      for (let i = 0; i < 8; i++) {
+        const randomSpace = RANDOMNESS_ON
+        ? Math.floor(-17 + Math.random() * 34)
+        : 0;
+      makeSpark(center, 45 * i + randomSpace);
+    }
+    };
+
+    /**
+    * Creates a spark
+    */
+    const makeSpark = (center, rotation) => {
+      const div = document.createElement("div");
+      const aniName = `disappear_${rotation}`;
+      dynamicAnimation(aniName, rotation);
+
+      div.classList.add("spark");
+      div.style.left = `${center.x}px`;
+      div.style.top = `${center.y}px`;
+      div.style.animation = `${aniName} 500ms ease-out both`;
+
+      document.body.append(div);
+    };
+    </script>
+
     <script>
         function popupAlert() {
             alert("Alert! You are not loved!");
         }
-        setInterval(popupAlert, 8000);
-</body>
+        setInterval(popupAlert, 10000);
+    </script>
+
+  </body>
 </html>
